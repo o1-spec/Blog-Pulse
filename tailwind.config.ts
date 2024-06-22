@@ -7,12 +7,16 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
+    colors: {
+      btnOrange: "#fd7e14",
+      white: "#ffffff",
+      black: "#000000",
+    },
+    backgroundImage: {
+      "hero-bg": "url('/hero_bg.jpg')",
+    },
+    boxShadow: {
+      overlay: "inset 0 0 0 1000px rgba(0, 0, 0, 0.5)",
     },
   },
   plugins: [],
