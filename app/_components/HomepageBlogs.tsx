@@ -91,10 +91,10 @@ function HomepageBlogs() {
                 })}
               </span>
             </div>
-            <h6 className="font-bold text-lg tracking-wider pb-2">
+            <h6 className="font-bold text-xl tracking-wider pb-2 uppercase">
               {blogs[0]?.title}
             </h6>
-            <p className="text-[15px] font-[500]">
+            <p className="text-[16px] font-[500]">
               {Excerpts(blogs[0]?.details, 220)}
             </p>
             <div className="flex items-center gap-3 pt-4">
@@ -105,18 +105,18 @@ function HomepageBlogs() {
                 alt={blogs[0]?.title}
                 className="rounded-[50%]"
               />
-              <div className="font-bold text-sm">{blogs[0]?.author}</div>
+              <div className="font-bold text-lg">{blogs[0]?.author}</div>
             </div>
           </div>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-16">
           {secondBlogs.map((blog, index) => (
             <div key={index} className="flex flex-col gap-2 mt-4">
               <div className="basis-[50%]">
                 <Image
                   src={blog.details_image}
                   alt={blog.title}
-                  width="450"
+                  width="470"
                   height="40"
                   className="rounded-xl h-[250px]"
                 />
@@ -135,10 +135,10 @@ function HomepageBlogs() {
                     })}
                   </span>
                 </div>
-                <h6 className="font-bold text-lg tracking-wider pb-2">
+                <h6 className="font-bold text-xl tracking-wider pb-2 uppercase">
                   {blog.title}
                 </h6>
-                <p className="text-[15px] font-[500]">
+                <p className="text-[16px] font-[500]">
                   {Excerpts(blog.details, 220)}
                 </p>
                 <div className="flex items-center gap-3 pt-4">
@@ -149,7 +149,7 @@ function HomepageBlogs() {
                     alt={blog.title}
                     className="rounded-[50%]"
                   />
-                  <div className="font-bold text-sm">{blog.author}</div>
+                  <div className="font-bold text-lg">{blog.author}</div>
                 </div>
               </div>
             </div>

@@ -1,11 +1,23 @@
 import type { Metadata } from "next";
-import { PT_Serif } from "next/font/google";
+import { PT_Serif, Roboto, Merriweather } from "next/font/google";
 import "./globals.css";
 import "./_lib/fontawesome"
 
 const ptSerif = PT_Serif({
   subsets: ["latin"],
   weight: "400",
+});
+
+const roboto = Roboto({
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+});
+
+const merriweather = Merriweather({
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
@@ -21,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${ptSerif.className} mx-0 my-0 box-border overflow-x-hidden`}
+        className={`${roboto.className} mx-0 my-0 box-border overflow-x-hidden`}
       >
         {children}
       </body>

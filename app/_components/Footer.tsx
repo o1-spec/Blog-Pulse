@@ -137,7 +137,7 @@ function Footer() {
             <li>
               <Link href="/">Community & programs</Link>
             </li>
-          </ul>
+          </ul>z
         </div>
       </div>
       <p className="pt-10 underline">Copyright &copy; Onadokun Oluwafemi</p>

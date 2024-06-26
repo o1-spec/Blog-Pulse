@@ -6,6 +6,7 @@ import Newsletter from "./_components/Newsletter";
 import ScrollDown from "./_components/ScrollDown";
 import GetStarted from "./_components/GetStarted";
 import Footer from "./_components/Footer";
+import Faq from "./_components/Faq";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       </div>
       <Newsletter />
       <HomepageBlogsTwo />
+      <Faq/>
       <div  className="text-white mt-16 bg-bgBlue">
         <GetStarted />
         <Footer />

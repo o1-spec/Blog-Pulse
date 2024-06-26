@@ -85,7 +85,7 @@ function HomepageBlogsTwo() {
                   })}
                 </span>
               </div>
-              <h6 className="font-bold text-lg tracking-wider pb-2">
+              <h6 className="font-bold text-lg tracking-wide pb-2 uppercase">
                 {blog.title}
               </h6>
               <p className="text-[15px] font-[500]">
@@ -99,7 +99,7 @@ function HomepageBlogsTwo() {
                   alt={blog.title}
                   className="rounded-[50%] object-cover"
                 />
-                <div className="font-bold text-sm">{blog.author}</div>
+                <div className="font-bold text-md">{blog.author}</div>
               </div>
             </div>
           </div>
