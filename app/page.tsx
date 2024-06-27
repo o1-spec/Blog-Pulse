@@ -1,12 +1,13 @@
-import BlogDisplay from "./_components/BlogDisplay";
-import HomepageBlogsTwo from "./_components/HomepageBlogsTwo";
-import Hero from "./_components/Hero";
-import HomeNav from "./_components/HomeNav";
-import Newsletter from "./_components/Newsletter";
-import ScrollDown from "./_components/ScrollDown";
-import GetStarted from "./_components/GetStarted";
-import Footer from "./_components/Footer";
-import Faq from "./_components/Faq";
+import BlogDisplay from "./_components/Home/BlogDisplay";
+import HomepageBlogsTwo from "./_components/Home/HomepageBlogsTwo";
+import Hero from "./_components/Home/Hero";
+import HomeNav from "./_components/Home/HomeNav";
+import Newsletter from "./_components/Home/Newsletter";
+import ScrollDown from "./_components/Home/ScrollDown";
+import GetStarted from "./_components/Home/GetStarted";
+import Footer from "./_components/Home/Footer";
+import Faq from "./_components/Home/Faq";
+import PhoneDisplay from "./_components/Home/PhoneDisplay";
 
 export default function Home() {
   return (
@@ -21,8 +22,9 @@ export default function Home() {
       </div>
       <Newsletter />
       <HomepageBlogsTwo />
-      <Faq/>
-      <div  className="text-white mt-16 bg-bgBlue">
+      <PhoneDisplay />
+      <Faq />
+      <div className="text-white bg-bgBlue">
         <GetStarted />
         <Footer />
       </div>

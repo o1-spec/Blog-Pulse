@@ -1,58 +1,14 @@
 "use client";
 import React from "react";
 import { useEffect, useState } from "react";
-import { collection, onSnapshot, Timestamp } from "firebase/firestore";
-import { db } from "../_lib/firebase";
 import Image from "next/image";
-import { Excerpts } from "../_lib/utils";
-import { Manrope } from "next/font/google";
-import { HomepageBlogInterface } from "../_lib/TypeInterface";
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  weight: "400",
-});
-
+import { Excerpts } from "../../_lib/utils";
+import { HomepageBlogInterface } from "../../_lib/TypeInterface";
+import { useFetchBlogs } from "@/app/_lib/actions";
 
 function HomepageBlogs() {
-  const [loading, setLoading] = useState(false);
-  const [blogs, setBlogs] = useState<HomepageBlogInterface[]>([]);
+  const { loading, blogs } = useFetchBlogs();
   const [secondBlogs, setSecondBlogs] = useState<HomepageBlogInterface[]>([]);
-
-  useEffect(() => {
-    const fetchBlog = async () => {
-      try {
-        setLoading(true);
-        const unsub = onSnapshot(
-          collection(db, "blogDisplay"),
-          (snapshot) => {
-            const list: HomepageBlogInterface[] = [];
-            snapshot.docs.forEach((doc) => {
-              list.push({ id: doc.id, ...doc.data() } as HomepageBlogInterface);
-            });
-            setBlogs(list);
-            console.log(list);
-            setLoading(false);
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-
-        return () => {
-          unsub();
-        };
-      } catch (err) {
-        if (err instanceof Error) {
-          // e is narrowed to Error!
-          console.log(err.message);
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchBlog();
-  }, []);
 
   useEffect(() => {
     if (blogs.length >= 3) {
@@ -65,7 +21,7 @@ function HomepageBlogs() {
   }
 
   return (
-    <div className={`${manrope.className} max-w-[1100px] mx-auto pt-6`}>
+    <div className={`max-w-[1100px] mx-auto pt-6`}>
       <div>
         <div className="flex gap-2 pb-20">
           <div className="basis-[50%]">
@@ -91,7 +47,7 @@ function HomepageBlogs() {
                 })}
               </span>
             </div>
-            <h6 className="font-bold text-xl tracking-wider pb-2 uppercase">
+            <h6 className="font-bold text-xl tracking-wide pb-2 uppercase">
               {blogs[0]?.title}
             </h6>
             <p className="text-[16px] font-[500]">
@@ -135,7 +91,7 @@ function HomepageBlogs() {
                     })}
                   </span>
                 </div>
-                <h6 className="font-bold text-xl tracking-wider pb-2 uppercase">
+                <h6 className="font-bold text-xl tracking-wide pb-2 uppercase">
                   {blog.title}
                 </h6>
                 <p className="text-[16px] font-[500]">

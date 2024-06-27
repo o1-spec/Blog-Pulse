@@ -2,50 +2,13 @@
 
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { Excerpts } from "../_lib/utils";
-import { HomepageBlogInterface } from "../_lib/TypeInterface";
-import { collection, onSnapshot } from "firebase/firestore";
-import { db } from "../_lib/firebase";
+import { Excerpts } from "../../_lib/utils";
+import { HomepageBlogInterface } from "../../_lib/TypeInterface";
+import { useFetchBlogs } from "@/app/_lib/actions";
 
 function HomepageBlogsTwo() {
-  const [loading, setLoading] = useState(false);
-  const [blogs, setBlogs] = useState<HomepageBlogInterface[]>([]);
+  const { loading, blogs } = useFetchBlogs();
   const [thirdBlogs, setThirdBlogs] = useState<HomepageBlogInterface[]>([]);
-
-  useEffect(() => {
-    const fetchBlog = async () => {
-      try {
-        setLoading(true);
-        const unsub = onSnapshot(
-          collection(db, "blogDisplay"),
-          (snapshot) => {
-            const list: HomepageBlogInterface[] = [];
-            snapshot.docs.forEach((doc) => {
-              list.push({ id: doc.id, ...doc.data() } as HomepageBlogInterface);
-            });
-            setBlogs(list);
-            console.log(list);
-            setLoading(false);
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-
-        return () => {
-          unsub();
-        };
-      } catch (err) {
-        if (err instanceof Error) {
-          // e is narrowed to Error!
-          console.log(err.message);
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchBlog();
-  }, []);
 
   useEffect(() => {
     if (blogs.length >= 6) {
@@ -58,7 +21,7 @@ function HomepageBlogsTwo() {
   }
 
   return (
-    <div className={`max-w-[1000px] mx-auto py-10`}>
+    <div className={`max-w-[1000px] mx-auto py-10 pb-16`}>
       <div className="flex gap-8">
         {thirdBlogs.map((blog, index) => (
           <div key={index} className="flex flex-col gap-2 mt-4">
