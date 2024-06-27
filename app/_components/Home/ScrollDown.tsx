@@ -1,12 +1,18 @@
+"use client";
+
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
-function ScrollDown() {
+type ScrollDownProps = {
+  onClick: () => void;
+};
+
+function ScrollDown({ onClick }: ScrollDownProps) {
   return (
     <div className="mt-20 border-2 border-white rounded-[50%] w-20 pt-4 mx-auto">
-      <div className="flex flex-col cursor-pointer">
+      <div className="flex flex-col cursor-pointer" onClick={onClick}>
         <FontAwesomeIcon icon={faArrowDown} size="2x" className="text-white" />
         <FontAwesomeIcon
           icon={faChevronDown}

@@ -1,3 +1,6 @@
+'use client'
+
+import React, { useRef } from "react";
 import BlogDisplay from "./_components/Home/BlogDisplay";
 import HomepageBlogsTwo from "./_components/Home/HomepageBlogsTwo";
 import Hero from "./_components/Home/Hero";
@@ -10,14 +13,22 @@ import Faq from "./_components/Home/Faq";
 import PhoneDisplay from "./_components/Home/PhoneDisplay";
 
 export default function Home() {
+  const blogDisplayRef = useRef<HTMLDivElement>(null);
+
+  const handleScrollDown = () => {
+    if (blogDisplayRef.current) {
+      blogDisplayRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <div className="relative w-[100vw] h-[100%] pb-6 bg-hero-bg bg-cover shadow-overlay bg-center">
         <HomeNav />
         <Hero />
-        <ScrollDown />
+        <ScrollDown onClick={handleScrollDown} />
       </div>
-      <div>
+      <div ref={blogDisplayRef}>
         <BlogDisplay />
       </div>
       <Newsletter />
