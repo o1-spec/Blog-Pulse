@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${roboto.className} mx-0 my-0 box-border overflow-x-hidden`}
+        className={`${roboto.className} mx-0 my-0 box-border overflow-x-hidden relative`}
       >
         {children}
       </body>

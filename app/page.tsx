@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React, { useRef } from "react";
 import BlogDisplay from "./_components/Home/BlogDisplay";
@@ -11,6 +11,7 @@ import GetStarted from "./_components/Home/GetStarted";
 import Footer from "./_components/Home/Footer";
 import Faq from "./_components/Home/Faq";
 import PhoneDisplay from "./_components/Home/PhoneDisplay";
+import InitialLoader from "./_components/InitialLoader";
 
 export default function Home() {
   const blogDisplayRef = useRef<HTMLDivElement>(null);
@@ -22,7 +23,8 @@ export default function Home() {
   };
 
   return (
-    <>
+    <div>
+      <InitialLoader />
       <div className="relative w-[100vw] h-[100%] pb-6 bg-hero-bg bg-cover shadow-overlay bg-center">
         <HomeNav />
         <Hero />
@@ -39,6 +41,6 @@ export default function Home() {
         <GetStarted />
         <Footer />
       </div>
-    </>
+    </div>
   );
 }
