@@ -35,6 +35,15 @@ function InitialLoader() {
           overflow: "hidden",
           duration: 0.1,
         })
+        .fromTo(
+          ".blinder-container",
+          {
+            zIndex: 10,
+          },
+          {
+            zIndex: -10,
+          }
+        )
         .from(
           text.words,
           {
@@ -86,7 +95,7 @@ function InitialLoader() {
       >
         <HomeLoading />
       </div>
-      <div className="blinder-container -z-10">
+      <div className="blinder-container z-10">
         <div className="blinder"></div>
         <div className="blinder"></div>
         <div className="blinder"></div>
