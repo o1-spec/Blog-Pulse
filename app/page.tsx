@@ -23,7 +23,7 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <div className="relative">
       <InitialLoader />
       <div className="relative w-[100vw] h-[100%] pb-6 bg-hero-bg bg-cover shadow-overlay bg-center">
         <HomeNav />

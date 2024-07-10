@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from 'react';
-import { collection, onSnapshot } from 'firebase/firestore';
-import { db } from './firebase';
-import { HomepageBlogInterface } from './TypeInterface'
+import { useEffect, useState } from "react";
+import { collection, onSnapshot } from "firebase/firestore";
+import { db } from "./firebase";
+import { HomepageBlogInterface } from "./TypeInterface";
 
 export const useFetchBlogs = () => {
   const [loading, setLoading] = useState(false);
@@ -14,7 +14,7 @@ export const useFetchBlogs = () => {
       try {
         setLoading(true);
         const unsub = onSnapshot(
-          collection(db, 'blogDisplay'),
+          collection(db, "blogDisplay"),
           (snapshot) => {
             const list: HomepageBlogInterface[] = [];
             snapshot.docs.forEach((doc) => {
