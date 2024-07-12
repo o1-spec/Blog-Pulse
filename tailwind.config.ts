@@ -17,13 +17,15 @@ const config: Config = {
       twitterBlue : "#1DA1F2",
       instagram: "#405DE6",
       youtube: "#FF0000",
-      bgGray: "#e9ecef"
+      bgGray: "#e9ecef",
+      bgIcon: "#D6D1F8",
     },
     backgroundImage: {
       "hero-bg": "url('/hero_bg.jpg')",
     },
     boxShadow: {
       overlay: "inset 0 0 0 1000px rgba(0, 0, 0, 0.5)",
+      signOverlay: "inset 0 0 0 1000px rgba(0, 0, 0, 0.2)",
     },
   },
   plugins: [],
