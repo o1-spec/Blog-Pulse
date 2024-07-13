@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPeopleGroup } from "@fortawesome/free-solid-svg-icons";
+import SignupForm from "@/app/_components/SignupForm";
 
 function SignUp() {
   return (
@@ -12,64 +12,14 @@ function SignUp() {
           <h1 className="text-3xl font-bold">Create Account</h1>
           <span>Welcome to the Blog-pulse Community</span>
         </div>
-        <button className="text-[14px] border border-bgIcon px-24 py-3 rounded-lg text-center flex items-center justify-center gap-2">
-          <Image width="20" height="10" src="Google.svg" alt="Google Icon" />
-          Sign up with Google
-        </button>
-        <div className="text-center flex items-center gap-4 py-4">
-          <div className="w-32 h-[1px] bg-bgIcon"></div>
-          Or
-          <div className="w-32 h-[1px] bg-bgIcon"></div>
-        </div>
-        <form>
-        <div className="pb-4">
-          <label className="font-bold pb-2 inline-block text-[15px]">Username</label>
-            <input
-              className="px-3 py-2.5 rounded-md w-[100%] placeholder:text-sm border border-bgIcon focus:outline-none"
-              type="text"
-              name="username"
-              placeholder="Username"
-            />
-          </div>
-          <div className="pb-4">
-          <label className="font-bold pb-2 inline-block text-[15px]">Email</label>
-            <input
-              className="px-3 py-2.5 rounded-md w-[100%] placeholder:text-sm border border-bgIcon focus:outline-none"
-              type="email"
-              name="email"
-              placeholder="Enter your email"
-            />
-          </div>
-          <div className="pb-4">
-          <label className="font-bold pb-2 inline-block text-[15px]">Password</label>
-            <input
-              className="px-3 py-2.5 rounded-md w-[100%] placeholder:text-sm border border-bgIcon focus:outline-none"
-              type="password"
-              name="password"
-              placeholder="Create a password"
-            />
-            <span className="text-black text-[12px] pl-1">Must be at least 8 characters</span>
-          </div>
-          <div className="pb-2">
-          <label className="font-bold pb-2 inline-block text-[15px]">Confirm Password</label>
-            <input
-              className="px-3 py-2.5 rounded-md w-[100%] placeholder:text-sm border border-bgIcon focus:outline-none"
-              type="password"
-              name="password"
-              placeholder="Confirm Password"
-            />
-          </div>
-          <div className="mt-5">
-            <input
-              className="bg-black text-white rounded-xl py-2 px-36 cursor-pointer hover:bg-white hover:text-black border duration-300"
-              type="submit"
-              value="Create Account"
-            />
-          </div>
-        </form>
+        
+        <SignupForm />
         <div className="flex items-center gap-1">
           <span className="text-[15px]">Already have an account?</span>
-          <Link className="text-[16px] text-btnOrange underline" href="/sign-in">
+          <Link
+            className="text-[16px] text-btnOrange underline"
+            href="/sign-in"
+          >
             Log in
           </Link>
         </div>

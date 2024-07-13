@@ -1,3 +1,4 @@
+import { User } from "firebase/auth";
 import { Timestamp } from "firebase/firestore";
 
 export interface HomepageBlogInterface {
@@ -22,4 +23,13 @@ export interface FaqInterface {
   answer: string;
   id: number;
   question: string;
+}
+
+export interface AuthContextType {
+  setUser: (user: User) => void;
+  user: User | null;
+  logIn: boolean;
+  setLogin: (logIn: boolean) => void;
+  handleLogout: () => void;
+  loading: boolean
 }

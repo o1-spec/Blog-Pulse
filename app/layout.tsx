@@ -1,23 +1,14 @@
 import type { Metadata } from "next";
-import { PT_Serif, Roboto, Merriweather } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
-import "./_lib/fontawesome"
-
-const ptSerif = PT_Serif({
-  subsets: ["latin"],
-  weight: "400",
-});
+import "./_lib/fontawesome";
+import { AuthProvider } from "./_context/AuthContext";
+import { Toaster } from "react-hot-toast";
 
 const roboto = Roboto({
-  weight: ['400', '700'],
-  style: ['normal', 'italic'],
-  subsets: ['latin'],
-});
-
-const merriweather = Merriweather({
-  weight: ['400', '700'],
-  style: ['normal', 'italic'],
-  subsets: ['latin'],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -35,7 +26,10 @@ export default function RootLayout({
       <body
         className={`${roboto.className} mx-0 my-0 box-border overflow-x-hidden relative`}
       >
-        {children}
+        <AuthProvider>
+          <Toaster position="bottom-center" />
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
