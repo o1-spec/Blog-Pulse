@@ -11,6 +11,8 @@ import {
 } from "firebase/auth";
 import Image from "next/image";
 import { AuthContext } from "../_context/AuthContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
 
 const initialState = {
   userName: "",
@@ -20,19 +22,25 @@ const initialState = {
 };
 
 function SignupForm() {
-  const { setUser, setLogin, user } = useContext(AuthContext);
+  const { setUser, setLogin } = useContext(AuthContext);
   const [state, setState] = useState(initialState);
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const { email, password, userName, confirmPassword } = state;
   const router = useRouter();
-  console.log(user);
+
+  //PASSWORD VISIBILITY
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
   const signUp = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
       if (password !== confirmPassword) {
         ErrorToast("Password dont match eachother");
       }
-      if (userName && email && password) {
+      if (userName && email && password.length >= 8) {
         setLoading(true);
         const { user } = await createUserWithEmailAndPassword(
           auth,
@@ -42,15 +50,21 @@ function SignupForm() {
         //sending email verification
         await sendEmailVerification(user);
         await updateProfile(user, { displayName: userName });
-        SuccessToast("Check your email to verify your account.");
-        router.push("/verification-success");
+        SuccessToast(
+          "Please check your email to verify your account, then sign in "
+        );
+        router.push("/sign-in");
+        //router.push("/verification-success");
+      } else {
+        ErrorToast("All fields are madatory to fill");
       }
     } catch (error: unknown) {
       if (error instanceof Error) {
-        ErrorToast(error);
+        ErrorToast(error.message);
       }
       console.log(error);
     } finally {
+      setState(initialState);
       setLoading(false);
     }
   };
@@ -64,7 +78,10 @@ function SignupForm() {
       SuccessToast("Google sign up complete");
       setLoading(true);
     } catch (error: unknown) {
-      ErrorToast(error);
+      if (error instanceof Error) {
+        ErrorToast(error.message);
+      }
+      console.log(error);
     } finally {
       setLoading(false);
     }
@@ -73,10 +90,6 @@ function SignupForm() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
-
-  if (loading) {
-    return <div>Loading</div>;
-  }
 
   return (
     <>
@@ -100,7 +113,7 @@ function SignupForm() {
           <input
             className="px-3 py-2.5 rounded-md w-[100%] placeholder:text-sm border border-bgIcon focus:outline-none"
             type="text"
-            name="username"
+            name="userName"
             placeholder="Username"
             value={userName}
             onChange={handleChange}
@@ -123,36 +136,60 @@ function SignupForm() {
           <label className="font-bold pb-2 inline-block text-[15px]">
             Password
           </label>
-          <input
-            className="px-3 py-2.5 rounded-md w-[100%] placeholder:text-sm border border-bgIcon focus:outline-none"
-            type="password"
-            name="password"
-            placeholder="Create a password"
-            value={password}
-            onChange={handleChange}
-          />
-          <span className="text-black text-[12px] pl-1">
-            Must be at least 8 characters
-          </span>
+          <div className="flex items-center relative">
+            <input
+              className="px-3 py-2.5 rounded-md w-[100%] placeholder:text-sm border border-bgIcon focus:outline-none"
+              type={showPassword ? "text" : "password"}
+              name="password"
+              placeholder="Create a password"
+              value={password}
+              onChange={handleChange}
+            />
+            <FontAwesomeIcon
+              icon={faEye}
+              size="1x"
+              onClick={togglePasswordVisibility}
+              className={`${
+                !showPassword ? "text-black" : "text-grey"
+              } absolute cursor-pointer right-2`}
+            />
+          </div>
+          {password.length < 8 ? (
+            <span className="text-[#ff0000] text-[12px] pl-1">
+              Must be at least 8 characters
+            </span>
+          ) : (
+            <></>
+          )}
         </div>
         <div className="pb-2">
           <label className="font-bold pb-2 inline-block text-[15px]">
             Confirm Password
           </label>
-          <input
-            className="px-3 py-2.5 rounded-md w-[100%] placeholder:text-sm border border-bgIcon focus:outline-none"
-            type="password"
-            name="password"
-            placeholder="Confirm Password"
-            value={confirmPassword}
-            onChange={handleChange}
-          />
+          <div className="flex items-center relative">
+            <input
+              className="px-3 py-2.5 rounded-md w-[100%] placeholder:text-sm border border-bgIcon focus:outline-none"
+              type={showPassword ? "text" : "password"}
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              value={confirmPassword}
+              onChange={handleChange}
+            />
+            <FontAwesomeIcon
+              icon={faEye}
+              size="1x"
+              onClick={togglePasswordVisibility}
+              className={`${
+                !showPassword ? "text-black" : "text-grey"
+              } absolute cursor-pointer right-2`}
+            />
+          </div>
         </div>
         <div className="mt-5">
           <input
-            className="bg-black text-white rounded-xl py-2 px-36 cursor-pointer hover:bg-white hover:text-black border duration-300"
+            className="bg-black text-white rounded-xl py-2 w-[400px] cursor-pointer hover:bg-white hover:text-black border duration-300"
             type="submit"
-            value="Create Account"
+            value={`${loading ? "Loading..." : "Create Account"}`}
           />
         </div>
       </form>

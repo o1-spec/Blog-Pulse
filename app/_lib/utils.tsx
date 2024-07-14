@@ -23,10 +23,8 @@ export const SuccessToast = (message: string) => {
   });
 };
 
-export const ErrorToast = (message: unknown) => {
-  const errorMessage =
-    typeof message === "string" ? message : "An unexpected error occurred";
-  return toast.error(errorMessage, {
+export const ErrorToast = (message: string) => {
+  return toast.error(message, {
     position: "bottom-left",
     autoClose: 2000,
     hideProgressBar: false,

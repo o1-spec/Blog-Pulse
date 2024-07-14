@@ -33,3 +33,8 @@ export interface AuthContextType {
   handleLogout: () => void;
   loading: boolean
 }
+
+export interface LoginFormProps {
+  setUser: (user: User) => void;
+  setLogin: (value: boolean) => void;
+}

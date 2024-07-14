@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
+import "react-toastify/dist/ReactToastify.css";
 import "./_lib/fontawesome";
 import { AuthProvider } from "./_context/AuthContext";
-import { Toaster } from "react-hot-toast";
+import { ToastContainer } from "react-toastify";
 
 const roboto = Roboto({
   weight: ["400", "700"],
@@ -27,7 +28,7 @@ export default function RootLayout({
         className={`${roboto.className} mx-0 my-0 box-border overflow-x-hidden relative`}
       >
         <AuthProvider>
-          <Toaster position="bottom-center" />
+          <ToastContainer />
           {children}
         </AuthProvider>
       </body>

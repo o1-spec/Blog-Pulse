@@ -12,7 +12,6 @@ function SignUp() {
           <h1 className="text-3xl font-bold">Create Account</h1>
           <span>Welcome to the Blog-pulse Community</span>
         </div>
-        
         <SignupForm />
         <div className="flex items-center gap-1">
           <span className="text-[15px]">Already have an account?</span>
