@@ -1,10 +1,42 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPeopleGroup } from "@fortawesome/free-solid-svg-icons";
 import SignupForm from "@/app/_components/SignupForm";
 
+const slides = [
+  {
+    title: "Blog Pulse",
+    quote: "Blogging is the backbone of content marketing",
+    number: "01 ------ 03",
+    bgImage: "hero-bg-7",
+  },
+  {
+    title: "Stay Updated",
+    quote: "Latest news and articles at your fingertips",
+    number: "02 ------ 03",
+    bgImage: "hero-bg-2",
+  },
+  {
+    title: "Join the Community",
+    quote: "Connect with like-minded individuals",
+    number: "03 ------ 03",
+    bgImage: "hero-bg-3",
+  },
+];
+
 function SignUp() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const handlePrevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+  };
+
+  const handleNextSlide = () => {
+    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+  };
+
   return (
     <div className="flex">
       <div className="basis-1/2 flex flex-col items-center justify-center gap-4 py-8">
@@ -24,7 +56,9 @@ function SignUp() {
         </div>
       </div>
       <div className="basis-1/2">
-        <div className="fixed w-[50%] h-[100vh] bg-hero-bg bg-cover shadow-signOverlay bg-center">
+        <div
+          className={`fixed w-[50%] h-[100vh] bg-${slides[currentSlide].bgImage} bg-cover shadow-signOverlay bg-center`}
+        >
           <div className="pt-8 px-6 flex justify-between items-center">
             <div className="flex items-center gap-4">
               <FontAwesomeIcon
@@ -38,24 +72,30 @@ function SignUp() {
             <div className="w-32 h-[1px] bg-bgIcon"></div>
           </div>
           <h1 className="text-white text-[66px] font-serif text-center pt-20">
-            Blog Pulse
+            {slides[currentSlide].title}
           </h1>
           <div className="pt-12">
             <div className="pl-6">
               <span className="text-white text-[72px]">&quot;</span>
               <p className="-translate-y-10 text-white text-2xl w-[400px]">
-                Blogging is the backbone of content marketing
+                {slides[currentSlide].quote}
               </p>
-              <p className="text-white">01 ------ 03</p>
+              <p className="text-white">{slides[currentSlide].number}</p>
             </div>
-            <div className="text-white flex items-center gap-4 justify-end pr-16 -translate-y-5">
-              <span className="border border-white rounded-[50%] text-md px-2.5 pt-1.5 pb-2 cursor-pointer">
-                &larr;
-              </span>
-              <span className="border border-white rounded-[50%] text-md px-2.5 pt-1.5 pb-2 cursor-pointer">
-                &rarr;
-              </span>
-            </div>
+          </div>
+          <div className="text-white flex items-center gap-4 justify-end pr-16 -translate-y-5">
+            <span
+              onClick={handlePrevSlide}
+              className="border border-white rounded-[50%] text-md px-2.5 pt-1.5 pb-2 cursor-pointer"
+            >
+              &larr;
+            </span>
+            <span
+              onClick={handleNextSlide}
+              className="border border-white rounded-[50%] text-md px-2.5 pt-1.5 pb-2 cursor-pointer"
+            >
+              &rarr;
+            </span>
           </div>
         </div>
       </div>
