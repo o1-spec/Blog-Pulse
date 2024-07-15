@@ -20,7 +20,7 @@ const slides = [
   },
   {
     title: "Join the Community",
-    quote: "Connect with like-minded individuals",
+    quote: "Connect and interact with like-minded individuals",
     number: "03 ------ 03",
     bgImage: "hero-bg-3",
   },
