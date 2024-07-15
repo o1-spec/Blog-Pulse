@@ -17,8 +17,10 @@ const VerifyEmail = () => {
           SuccessToast("Email verified successfully!");
           router.push("/verification-success");
         })
-        .catch((error: { message: unknown; }) => {
-          ErrorToast(error.message);
+        .catch((error: unknown) => {
+          if (error instanceof Error) {
+            ErrorToast(error.message);
+          }
         });
     }
   }, [oobCode, router]);
