@@ -10,7 +10,7 @@ const poppins = Poppins({
   subsets: ["latin"],
 });
 
-function InitialLoader() {
+function PageInitialLoading() {
   const [isInit, setIsInit] = useState(false);
   const textRef = useRef(null);
   const loaderRef = useRef(null);
@@ -80,7 +80,6 @@ function InitialLoader() {
         });
     }
   }, []);
-
   return (
     <div
       ref={containerRef}
@@ -109,4 +108,4 @@ function InitialLoader() {
   );
 }
 
-export default InitialLoader;
+export default PageInitialLoading;

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPeopleGroup } from "@fortawesome/free-solid-svg-icons";
 import SignupForm from "@/app/_components/SignupForm";
+import InitialLoader from "@/app/_components/InitialLoader";
 
 function SignUp() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -17,7 +18,8 @@ function SignUp() {
   };
 
   return (
-    <div className="flex">
+    <div className="flex relative">
+      <InitialLoader />
       <div className="basis-1/2 flex flex-col items-center justify-center gap-4 py-8">
         <div className="flex flex-col text-center gap-1 pb-4">
           <h1 className="text-3xl font-bold">Create Account</h1>

@@ -5,7 +5,6 @@ import "react-toastify/dist/ReactToastify.css";
 import "./_lib/fontawesome";
 import { AuthProvider } from "./_context/AuthContext";
 import { ToastContainer } from "react-toastify";
-import HomeNav from "./_components/Home/HomeNav";
 
 const manrope = Manrope({
   weight: ["400", "700"],
