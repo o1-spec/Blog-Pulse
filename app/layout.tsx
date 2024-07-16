@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 import "react-toastify/dist/ReactToastify.css";
 import "./_lib/fontawesome";
 import { AuthProvider } from "./_context/AuthContext";
 import { ToastContainer } from "react-toastify";
+import HomeNav from "./_components/Home/HomeNav";
 
-const roboto = Roboto({
+const manrope = Manrope({
   weight: ["400", "700"],
-  style: ["normal", "italic"],
+  style: ["normal"],
   subsets: ["latin"],
 });
 
@@ -25,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${roboto.className} mx-0 my-0 box-border overflow-x-hidden relative`}
+        className={`${manrope.className} mx-0 my-0 box-border overflow-x-hidden relative`}
       >
         <AuthProvider>
           <ToastContainer />

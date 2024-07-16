@@ -11,6 +11,9 @@ function Newsletter() {
     <div className="max-w-[1100px] mx-auto bg-bgBlue rounded-lg text-white my-10 px-2 relative">
       <div className="triangle"></div>
       <div className="triangle-two"></div>
+      <div className="triangle-three"></div>
+      <div className="triangle-four"></div>
+      <div className="triangle-five"></div>
       <div className="flex gap-4 pt-8 pb-12 px-6">
         <div className="flex flex-col gap-3 basis-1/2">
           <h2 className="text-4xl pb-2">Looking to join our blog community?</h2>

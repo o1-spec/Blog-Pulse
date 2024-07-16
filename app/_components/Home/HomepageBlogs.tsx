@@ -47,7 +47,7 @@ function HomepageBlogs() {
                 })}
               </span>
             </div>
-            <h6 className="font-bold text-xl tracking-wide pb-2 uppercase">
+            <h6 className="font-bold text-xl tracking-wide pb-2 uppercase underline">
               {blogs[0]?.title}
             </h6>
             <p className="text-[16px] font-[500]">
